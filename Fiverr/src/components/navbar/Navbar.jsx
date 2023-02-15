@@ -13,16 +13,18 @@ const Navbar = () => {
   }
 
   const isActive = () => {
-    window.scrollY > 0 ? setActive(true) : setActive(false)
+    {
+      window.scrollY > 0 ? setActive(true) : setActive(false)
+    }
   }
 
   useEffect(() => {
     window.addEventListener('scroll', isActive)
-
+    console.log(active)
     return () => {
       window.removeEventListener('scroll', isActive)
     }
-  }, [])
+  }, [active])
 
   return (
     <div className={active || pathname !== '/' ? 'navbar active' : 'navbar'}>
@@ -71,19 +73,18 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      {active ||
-        (pathname !== '/' && (
-          <>
-            <hr />
-            <div className="menu">
-              <span>lorem</span>
-              <span>lorem</span>
-              <span>lorem</span>
-              <span>lorem</span>
-              <span>lorem</span>
-            </div>
-          </>
-        ))}
+      {(active || pathname !== '/') && (
+        <div>
+          <hr />
+          <div className="menu">
+            <span>lorem</span>
+            <span>lorem</span>
+            <span>lorem</span>
+            <span>lorem</span>
+            <span>lorem</span>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
