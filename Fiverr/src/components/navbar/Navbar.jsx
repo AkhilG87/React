@@ -20,7 +20,6 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', isActive)
-    console.log(active)
     return () => {
       window.removeEventListener('scroll', isActive)
     }
